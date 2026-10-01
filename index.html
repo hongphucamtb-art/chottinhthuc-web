@@ -1,0 +1,83 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chợt Tỉnh Thức – Ứng dụng tu học cho Phật tử</title><meta name="description" content="Ứng dụng miễn phí cho Phật tử: lịch chay, Lời Phật dạy mỗi ngày, đếm niệm Phật, kinh sách, công phu, thủy triều phóng sanh, món chay."><meta property="og:title" content="Chợt Tỉnh Thức – Người bạn đồng hành trên con đường tu học"><meta property="og:description" content="Lịch chay, Lời Phật dạy, đếm niệm Phật, kinh sách, công phu, thủy triều phóng sanh. Miễn phí, không quảng cáo."><meta property="og:image" content="https://chottinhthuc.com/anh-bia.png"><meta property="og:url" content="https://chottinhthuc.com/"><link rel="icon" href="logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Noto+Serif:ital,wght@1,400&display=swap" rel="stylesheet"><style>
+:root{--do:#7B1E1E;--do2:#5A1616;--vang:#C8961E;--vang2:#F3C74A;--kem:#FBF6EC;--nau:#3B2E20;--mo:#7A6650}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Be Vietnam Pro',sans-serif;color:var(--nau);background:var(--kem)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:5;background:rgba(90,22,22,.97);color:#FFF3D6}
+header .wrap{display:flex;align-items:center;gap:14px;height:72px}
+header img{width:44px;height:44px;border-radius:22px;background:#fff}
+header b{font:800 19px 'Be Vietnam Pro';letter-spacing:1px;color:#F8DC80}
+header nav{margin-left:auto;display:flex;gap:26px;font-size:15px;opacity:.9}
+header .nut{margin-left:22px;background:var(--vang2);color:var(--do2);font-weight:800;padding:10px 18px;border-radius:22px;font-size:15px}
+.hero{background:radial-gradient(circle at 75% 40%,#A33A2E 0,#7B1E1E 40%,#4A1212 100%);color:#FFF3D6;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;padding-top:70px;padding-bottom:0}
+.hero .nhan{display:inline-block;border:1px solid rgba(243,199,74,.5);color:#F8DC80;border-radius:20px;padding:6px 14px;font-size:14px;font-weight:600}
+.hero h1{font:800 58px/1.08 'Be Vietnam Pro';white-space:nowrap;color:#F8DC80;margin-top:18px;letter-spacing:1px}
+.hero .ph{font:italic 400 25px/1.4 'Noto Serif',serif;margin-top:12px}
+.hero .gt{font-size:17.5px;line-height:1.7;margin-top:18px;opacity:.9;max-width:540px}
+.nuts{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.tai{display:flex;align-items:center;gap:12px;background:linear-gradient(#F8DC80,#E0B43A);color:var(--do2);border-radius:16px;padding:14px 22px;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.tai svg{width:30px;height:30px}
+.tai b{display:block;font-size:18px}.tai span{font-size:13px;opacity:.85}
+.tai.xam{background:rgba(255,243,214,.1);color:#FFF3D6;border:1px solid rgba(255,243,214,.35);box-shadow:none}
+.camket{display:flex;gap:22px;margin-top:26px;font-size:14px;opacity:.9;flex-wrap:wrap}
+.camket span:before{content:"✓ ";color:var(--vang2);font-weight:800}
+.dt{position:relative;height:640px}
+.dt img{position:absolute;width:290px;border-radius:38px;border:10px solid #1E140C;box-shadow:0 30px 60px rgba(0,0,0,.45);background:#1E140C}
+.dt .a{left:40px;top:60px;transform:rotate(-6deg)}
+.dt .b{left:250px;top:10px;transform:rotate(5deg);z-index:2}
+section.khoi{padding:84px 0}
+.tieu{text-align:center;margin-bottom:44px}
+.tieu small{color:var(--vang);font-weight:800;letter-spacing:2px;font-size:14px}
+.tieu h2{font:800 40px/1.2 'Be Vietnam Pro';color:var(--do);margin-top:8px}
+.tieu p{color:var(--mo);font-size:17px;margin-top:10px}
+.luoi{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.the{background:#fff;border:1px solid #EADCC1;border-radius:20px;padding:24px 22px;box-shadow:0 6px 16px rgba(120,80,20,.06)}
+.the .i{width:52px;height:52px;border-radius:16px;background:linear-gradient(#9A2E2E,#7B1E1E);color:#F8DC80;display:flex;align-items:center;justify-content:center}
+.the .i svg{width:28px;height:28px}
+.the h3{font:700 18px/1.3 'Be Vietnam Pro';color:var(--do);margin-top:16px}
+.the p{font-size:14.5px;line-height:1.6;color:var(--mo);margin-top:8px}
+.anh{background:linear-gradient(#F3E6CB,#FBF6EC)}
+.cuon{display:flex;gap:22px;justify-content:center}
+.cuon figure{text-align:center}
+.cuon img{width:150px;border-radius:22px;border:6px solid #2A1D12;box-shadow:0 12px 26px rgba(60,30,10,.25);display:block}
+.cuon figcaption{margin-top:12px;font-weight:700;color:var(--do);font-size:15px}
+.buoc{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:b}
+.buoc .the{text-align:center;padding-top:30px}
+.buoc .so{width:54px;height:54px;border-radius:27px;background:var(--vang2);color:var(--do2);font:800 24px/54px 'Be Vietnam Pro';margin:0 auto;box-shadow:0 6px 14px rgba(200,150,30,.35)}
+.buoc h3{margin-top:16px}
+.loiday{background:radial-gradient(circle at 50% 0,#9A2E2E,#5A1616);color:#FFF3D6;text-align:center}
+.loiday q{display:block;font:italic 400 30px/1.55 'Noto Serif',serif;max-width:860px;margin:0 auto}
+.loiday cite{display:block;margin-top:18px;font-style:normal;color:#F8DC80;font-size:16px}
+.hoi{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.hoi .the h3{margin-top:0;font-size:17px}
+footer{background:#2A1D12;color:#E8DCC4;padding:48px 0 30px}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+footer h4{color:#F8DC80;font-size:16px;margin-bottom:12px}
+footer p,footer li{font-size:14.5px;line-height:1.9;list-style:none;opacity:.85}
+footer .cuoi{grid-column:1/-1;border-top:1px solid rgba(232,220,196,.15);padding-top:22px;margin-top:10px;display:flex;justify-content:space-between;font-size:13.5px;opacity:.7}
+footer .logo{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+footer .logo img{width:52px;height:52px;border-radius:26px;background:#fff}
+footer .logo b{font:800 20px 'Be Vietnam Pro';color:#F8DC80;letter-spacing:1px}
+@media (max-width:700px){
+ header nav{display:none}header .wrap{height:62px}header .nut{margin-left:auto;padding:8px 14px;font-size:14px}
+ .hero .wrap{grid-template-columns:1fr;padding-top:40px}
+ .hero h1{font-size:38px}.hero .ph{font-size:20px}.hero .gt{font-size:16px}
+ .tai{width:100%}
+ .dt{height:470px}.dt img{width:210px;border-width:8px;border-radius:30px}.dt .a{left:8px;top:40px}.dt .b{left:130px;top:0}
+ section.khoi{padding:56px 0}.tieu h2{font-size:30px}
+ .luoi,.buoc{grid-template-columns:1fr 1fr;gap:14px}.the{padding:18px 16px}.the h3{font-size:16px}.the p{font-size:13.5px}
+ .cuon{justify-content:flex-start;overflow:hidden;gap:14px}.cuon img{width:132px}
+ .loiday q{font-size:22px}
+ footer .wrap{grid-template-columns:1fr}
+ footer .cuoi{flex-direction:column;gap:6px}
+}
+</style></head><body><header><div class="wrap"><img src="logo.png" alt=""><b>CHỢT TỈNH THỨC</b><nav><a href="#tinhnang">Tính năng</a><a href="#hinhanh">Hình ảnh</a><a href="#caidat">Cách cài</a><a href="#hoidap">Hỏi đáp</a></nav><a class="nut" href="#tai">Tải app</a></div></header><section class="hero" id="tai"><div class="wrap"><div style="padding-bottom:70px"><span class="nhan">Ứng dụng Android · Miễn phí · Không quảng cáo</span><h1>CHỢT TỈNH THỨC</h1><div class="ph">Người bạn đồng hành trên con đường tu học</div>
+<p class="gt">Nhớ ngày chay, ngày vía, đọc tụng kinh, công phu, đếm niệm Phật, nghe pháp và xem thủy triều để phóng sanh — tất cả trong một ứng dụng nhỏ gọn, dễ dùng cho mọi lứa tuổi.</p>
+<div class="nuts"><a class="tai" href="https://github.com/hongphucamtb-art/Lich-via-phat/releases/latest/download/ChotTinhThuc.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 19h14"/></svg><div><b>Tải về cho Android</b><span>File APK · Bản mới nhất · khoảng 1,7 MB</span></div></a><a class="tai xam" href="#caidat" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l11 9-11 9z" fill="currentColor" opacity=".9"/></svg><div><b>CH Play</b><span>Sắp có</span></div></a></div>
+<div class="camket"><span>Miễn phí trọn đời</span><span>Không quảng cáo</span><span>Không cần tài khoản</span><span>Dữ liệu chỉ lưu trong máy</span></div></div>
+<div class="dt"><img class="a" src="anh-01_homnay.jpg" alt="Màn hình Hôm nay"><img class="b" src="anh-08_np_dem.jpg" alt="Màn hình Niệm Phật"></div></div></section><section class="khoi" id="tinhnang"><div class="wrap"><div class="tieu"><small>TÍNH NĂNG</small><h2>Đủ cho một ngày tu học</h2><p>Mọi chức năng đều miễn phí, đa số dùng được khi không có mạng.</p></div><div class="luoi"><div class="the"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h7a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-7a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h7z"/></svg></div><h3>Lời Phật dạy mỗi ngày</h3><p>Xen kẽ Kinh Pháp Cú (423 câu) và lời chư Phật, chư Tổ, thông báo mỗi sáng.</p></div><div class="the"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h3>Lịch chay, ngày vía</h3><p>Lịch âm dương, nhắc ngày trai theo nhị, tứ, lục, thập trai, trường chay và các ngày lễ.</p></div><div class="the"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="1.6"/><circle cx="17.5" cy="6.3" r="1.6"/><circle cx="19.8" cy="11.8" r="1.6"/><circle cx="17.5" cy="17.3" r="1.6"/><circle cx="6.5" cy="17.3" r="1.6"/><circle cx="4.2" cy="11.8" r="1.6"/><circle cx="6.5" cy="6.3" r="1.6"/></svg></div><h3>Công Cứ Niệm Phật</h3><p>Bấm đếm từng câu, tiếng mõ, rung, chuỗi 108; thống kê theo ngày, tuần, tháng, năm.</p></div><div class="the"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div><h3>Thủy triều – Phóng sanh</h3><p>Giờ nước lớn, nước ròng tại 34 điểm ven biển Việt Nam, biểu đồ mực nước 24 giờ.</p></div><div class="the"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"/><path d="M4 17a3 3 0 0 1 3-3h12"/></svg></div><h3>Kinh sách</h3><p>9 bộ kinh, chú, nghi thức; đọc như cuốn sách, lật từng trang, chỉnh cỡ chữ.</p></div><div class="the"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg></div><h3>Nghe pháp, tụng kinh</h3><p>Kinh tụng MP3, nhạc niệm Phật, khai thị; kéo thời gian, chỉnh tốc độ nghe.</p></div><div class="the"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10a6 6 0 0 1 12 0v4l2 3H4l2-3z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div><h3>Công phu</h3><p>Tụng kinh cùng chuông, mõ, khánh, đại hồng chung; mõ tự đánh chỉnh tốc độ.</p></div><div class="the"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M8 9c0-2 2-2 2-4M12 9c0-2 2-2 2-4"/></svg></div><h3>Món chay</h3><p>200 món chay tịnh, không ngũ vị tân, có nguyên liệu và cách làm từng bước.</p></div></div></div></section><section class="khoi anh" id="hinhanh"><div class="wrap"><div class="tieu"><small>HÌNH ẢNH</small><h2>Giao diện ấm áp, dễ nhìn</h2><p>Chữ to rõ, màu sắc trang nghiêm, phù hợp cả người lớn tuổi.</p></div><div class="cuon"><figure><img src="anh-01_homnay.jpg" alt="Hôm nay"><figcaption>Hôm nay</figcaption></figure><figure><img src="anh-03_lich.jpg" alt="Lịch"><figcaption>Lịch</figcaption></figure><figure><img src="anh-08_np_dem.jpg" alt="Niệm Phật"><figcaption>Niệm Phật</figcaption></figure><figure><img src="anh-12_np_bieudo.jpg" alt="Thống kê"><figcaption>Thống kê</figcaption></figure><figure><img src="anh-16_trieu_bd.jpg" alt="Thủy triều"><figcaption>Thủy triều</figcaption></figure><figure><img src="anh-21_dockinh.jpg" alt="Đọc kinh"><figcaption>Đọc kinh</figcaption></figure><figure><img src="anh-24_phapkhi.jpg" alt="Công phu"><figcaption>Công phu</figcaption></figure></div></div></section><section class="khoi" id="caidat"><div class="wrap"><div class="tieu"><small>CÁCH CÀI</small><h2>Cài đặt trong 4 bước</h2><p>Chỉ cần làm một lần. Lần sau có bản mới, tải và cài đè lên, dữ liệu vẫn giữ nguyên.</p></div><div class="buoc"><div class="the"><div class="so">1</div><h3>Tải file về</h3><p>Bấm nút <b>Tải về cho Android</b> ở đầu trang, file ChotTinhThuc.apk sẽ được lưu vào máy.</p></div><div class="the"><div class="so">2</div><h3>Mở file vừa tải</h3><p>Mở thông báo tải xong hoặc vào mục <b>Tệp / Tải xuống</b>, chạm vào file ChotTinhThuc.apk.</p></div><div class="the"><div class="so">3</div><h3>Cho phép cài đặt</h3><p>Nếu máy hỏi, chọn <b>Cài đặt</b> → bật <b>"Cho phép từ nguồn này"</b>, quay lại bấm <b>Cài đặt</b>.</p></div><div class="the"><div class="so">4</div><h3>Mở app và cho phép thông báo</h3><p>Mở Chợt Tỉnh Thức, bấm <b>Cho phép</b> để nhận lời nhắc ngày chay, niệm Phật, Lời Phật dạy.</p></div></div></div></section><section class="khoi loiday"><div class="wrap"><q>Không làm mọi điều ác, thành tựu các hạnh lành, giữ tâm ý trong sạch; đó là lời chư Phật dạy.</q><cite>— Kinh Pháp Cú, câu 183</cite></div></section><section class="khoi" id="hoidap" style="padding-top:70px"><div class="wrap"><div class="tieu"><small>HỎI ĐÁP</small><h2>Câu hỏi thường gặp</h2></div><div class="hoi"><div class="the"><h3>App có mất phí không?</h3><p>Hoàn toàn miễn phí, không quảng cáo, không bán hàng. App được làm ra để cúng dường và hỗ trợ quý Phật tử tu học.</p></div><div class="the"><h3>Cài từ file APK có an toàn không?</h3><p>File được tác giả build trực tiếp từ mã nguồn. Máy có thể hiện cảnh báo vì app chưa có trên CH Play, quý vị chọn "Vẫn cài đặt". App không đọc danh bạ, hình ảnh, vị trí.</p></div><div class="the"><h3>App có cần internet không?</h3><p>Đa số chức năng dùng được khi không có mạng. Chỉ thủy triều, nghe MP3, pháp âm và video cần internet.</p></div><div class="the"><h3>Dùng được trên iPhone không?</h3><p>Hiện app dành cho điện thoại Android. Phiên bản iPhone sẽ được cân nhắc sau.</p></div></div></div></section><footer><div class="wrap"><div><div class="logo"><img src="logo.png" alt=""><b>CHỢT TỈNH THỨC</b></div><p>Ứng dụng đồng hành cùng quý Phật tử trong đời sống tu học hằng ngày.<br>Tác giả: Diệu Âm Đức Thọ</p></div>
+<div><h4>Kênh Chợt Tỉnh Thức</h4><ul><li><a href="https://www.youtube.com/@ChotTinhThuc">YouTube: @ChotTinhThuc</a></li><li><a href="https://www.tiktok.com/@cht.tnh.thc">TikTok: @cht.tnh.thc</a></li><li><a href="https://www.facebook.com/profile.php?id=61573570739476">Facebook: Trang Chợt Tỉnh Thức</a></li></ul></div>
+<div><h4>Thông tin</h4><ul><li><a href="huong-dan-su-dung.pdf">Hướng dẫn sử dụng (PDF)</a></li><li><a href="chinh-sach-quyen-rieng-tu.html">Chính sách quyền riêng tư</a></li><li><a href="https://github.com/hongphucamtb-art/Lich-via-phat/releases/latest/download/ChotTinhThuc.apk">Tải file APK</a></li></ul></div>
+<div class="cuoi"><span>Nguyện đem công đức này, hướng về khắp tất cả, đệ tử và chúng sinh, đều trọn thành Phật đạo.</span><span>Nam Mô A Di Đà Phật</span></div></div></footer></body></html>
