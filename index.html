@@ -728,6 +728,26 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
 .sk-bia-mat b{font:700 clamp(22px,4vw,30px)/1.3 var(--f-kinh);color:#F6D77A;border-top:1px solid rgba(243,199,74,.65);border-bottom:1px solid rgba(243,199,74,.65);padding:16px 6px;text-shadow:0 1px 2px rgba(0,0,0,.7)}
 .sk-bia-mat i{font:italic 14px var(--f-kinh);color:#E8CF94}
 .sk-bia.mo{transform:rotateY(-112deg);opacity:0}
+/* thanh nghe pháp */
+.am-bar{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(560px,calc(100% - 16px));z-index:40;background:linear-gradient(#5A1414,#3A0C0C);color:#FFF3D6;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.45);padding:10px 12px 10px;border:1px solid rgba(243,199,74,.35);display:flex;flex-direction:column;gap:4px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+.am-bar[hidden]{display:none}
+.am-h1{display:flex;align-items:center;gap:10px}
+.am-tron{flex:none;width:44px;height:44px;border-radius:22px;border:0;background:var(--vang2);color:var(--do3);font-size:16px;font-weight:800;cursor:pointer}
+.am-tt{flex:1;min-width:0;display:flex;flex-direction:column}
+.am-tt b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.am-tt span{font-size:11.5px;opacity:.75}
+.am-x{flex:none;width:34px;height:34px;border-radius:17px;border:1px solid rgba(243,199,74,.35);background:transparent;color:#FFF3D6;font-size:14px;cursor:pointer}
+#amTua{width:100%;accent-color:#D4A017;height:22px;margin:2px 0 0}
+.am-tg{display:flex;justify-content:space-between;font-size:11.5px;opacity:.8;font-variant-numeric:tabular-nums;margin-top:-4px}
+.am-dk{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.am-dk button{height:34px;min-width:44px;padding:0 10px;border-radius:17px;border:1px solid rgba(243,199,74,.4);background:rgba(255,243,214,.08);color:#FFF3D6;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.am-dk button.bat{background:var(--vang2);color:var(--do3);border-color:var(--vang2)}
+@media (max-width:420px){.am-dk button{min-width:0;padding:0 8px;font-size:12.5px}}
+.am-bar{align-items:stretch!important}.am-bar #amSau{display:inline-block!important}
+/* đầu khung trên điện thoại */
+@media (max-width:600px){.ts-dau{flex-wrap:wrap}.ts-dau .ts-x{margin-right:0!important}.ts-dau>div{flex:1 1 100%!important}}
+/* video: ẩn ảnh bìa khi phát */
+.vd-bia[hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -942,7 +962,13 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
  <div class="ts-dau"><div style="flex:1;min-width:0"><span class="ts-so">NGHE PHÁP</span><h2 id="amTen"></h2><p>Bấm vào bài để nghe. Âm thanh phát từ archive.org, cần có mạng.</p></div><button type="button" class="ts-x" id="amX" aria-label="Quay lại">‹ Quay lại</button></div>
  <ol class="am-ds" id="amDs"></ol>
 </article></div>
-<div class="am-bar" id="amBar" hidden><button type="button" id="amPP" aria-label="Phát hoặc tạm dừng">❚❚</button><div class="am-giua"><b id="amBai"></b><div class="am-thanh" id="amThanh"><i id="amTien"></i></div><span id="amGio">0:00</span></div><button type="button" id="amSau" aria-label="Bài kế tiếp">⏭</button><button type="button" id="amLap" aria-label="Chế độ lặp">↻ Tắt</button><button type="button" id="amDong" aria-label="Tắt trình phát">×</button><audio id="amAu" preload="none"></audio></div>
+<div class="am-bar" id="amBar" hidden>
+ <div class="am-h1"><button type="button" class="am-tron" id="amPP" aria-label="Phát hoặc tạm dừng">❚❚</button><div class="am-tt"><b id="amBai"></b><span id="amGio">Đang tải…</span></div><button type="button" class="am-x" id="amDong" aria-label="Tắt trình phát">✕</button></div>
+ <input type="range" id="amTua" min="0" max="1000" value="0" step="1" aria-label="Tua bài">
+ <div class="am-tg"><span id="amNow">0:00</span><span id="amDur">--:--</span></div>
+ <div class="am-dk"><button type="button" id="amTruoc" aria-label="Bài trước">⏮</button><button type="button" id="amLui" aria-label="Lùi 15 giây">−15s</button><button type="button" id="amToc" aria-label="Tốc độ phát">1×</button><button type="button" id="amToi" aria-label="Tới 15 giây">+15s</button><button type="button" id="amSau" aria-label="Bài kế tiếp">⏭</button><button type="button" id="amLap" aria-label="Chế độ lặp">↻ Tắt</button></div>
+ <audio id="amAu" preload="none"></audio>
+</div>
 <div class="sach-nen" id="sachNen" hidden role="dialog" aria-modal="true" aria-labelledby="skTen">
  <div class="sk-top"><button type="button" class="sk-ve" id="skVe" aria-label="Quay lại">‹ Quay lại</button><div class="sk-tt"><b id="skTen"></b><select id="skPhan" aria-label="Chọn phần" hidden></select></div><button type="button" class="sk-nut" id="skNho" aria-label="Chữ nhỏ hơn">A−</button><button type="button" class="sk-nut" id="skLon" aria-label="Chữ lớn hơn">A+</button></div>
  <div class="sk-san" id="skSan"><div class="trang-giay" id="skDuoi"></div><div class="trang-giay" id="skTren"></div><div class="sk-bia" id="skBia" aria-hidden="true"><div class="sk-bia-mat"><span class="sk-bia-chi"></span><b id="skBiaTen"></b><i id="skBiaPhu"></i></div></div></div>
@@ -1231,9 +1257,14 @@ function apLap(){const c=["↻ Tắt","↻ 1 bài","↻ Tất cả"];$("amLap").
 $("amLap").onclick=()=>{amLap=(amLap+1)%3;try{localStorage.setItem("amLap",amLap);}catch(_){}apLap();};apLap();
 au2.addEventListener("ended",()=>{const n=amBai(amK).length;if(amLap===2||amI<n-1){const j=(amI+1)%n;amI=-1;phatAm(amK,j);}});
 au2.addEventListener("play",()=>{$("amPP").textContent="❚❚";if(!$("amNen").hidden)veAmDs();});au2.addEventListener("pause",()=>{$("amPP").textContent="▶";if(!$("amNen").hidden)veAmDs();});
-au2.addEventListener("timeupdate",()=>{$("amGio").textContent=tgx(au2.currentTime)+(au2.duration&&isFinite(au2.duration)?" / "+tgx(au2.duration):"");if(au2.duration)$("amTien").style.width=(au2.currentTime/au2.duration*100)+"%";});
-au2.addEventListener("error",()=>{if(amK)$("amGio").textContent="Không phát được, xin kiểm tra mạng";});
-$("amThanh").onclick=e=>{if(!au2.duration)return;const r=$("amThanh").getBoundingClientRect();au2.currentTime=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))*au2.duration;};
+let amKeo=false;au2.addEventListener("timeupdate",()=>{$("amNow").textContent=tgx(au2.currentTime);if(au2.duration&&isFinite(au2.duration)){$("amDur").textContent=tgx(au2.duration);if(!amKeo)$("amTua").value=Math.round(au2.currentTime/au2.duration*1000);}});au2.addEventListener("playing",()=>{$("amGio").textContent=AM_TEN[amK]+" · "+(amI+1)+"/"+amBai(amK).length;});au2.addEventListener("waiting",()=>{$("amGio").textContent="Đang tải…";});
+au2.addEventListener("error",()=>{if(amK)$("amGio").textContent="Không phát được, xin kiểm tra kết nối mạng";});
+$("amTua").addEventListener("input",()=>{amKeo=true;if(au2.duration)$("amNow").textContent=tgx($("amTua").value/1000*au2.duration);});$("amTua").addEventListener("change",()=>{if(au2.duration)au2.currentTime=$("amTua").value/1000*au2.duration;amKeo=false;});
+$("amLui").onclick=()=>{au2.currentTime=Math.max(0,au2.currentTime-15);};$("amToi").onclick=()=>{if(au2.duration)au2.currentTime=Math.min(au2.duration-1,au2.currentTime+15);};
+$("amTruoc").onclick=()=>{if(au2.currentTime>5){au2.currentTime=0;return;}const n=amBai(amK).length;const j=(amI-1+n)%n;amI=-1;phatAm(amK,j);};
+const AM_TD=[0.75,1,1.25,1.5,1.75,2];let amTd=1;try{amTd=+localStorage.getItem("amToc")||1;}catch(_){}if(!AM_TD.includes(amTd))amTd=1;
+function apToc(){au2.defaultPlaybackRate=amTd;au2.playbackRate=amTd;$("amToc").textContent=String(amTd).replace(".",",")+"×";$("amToc").classList.toggle("bat",amTd!==1);}
+$("amToc").onclick=()=>{amTd=AM_TD[(AM_TD.indexOf(amTd)+1)%AM_TD.length];try{localStorage.setItem("amToc",amTd);}catch(_){}apToc();};apToc();au2.addEventListener("loadedmetadata",apToc);
 $("amPP").onclick=()=>{if(au2.paused)au2.play();else au2.pause();};$("amSau").onclick=()=>{const n=amBai(amK).length;const j=(amI+1)%n;amI=-1;phatAm(amK,j);};
 $("amDong").onclick=()=>{au2.pause();$("amBar").hidden=true;amK="";amI=-1;};
 $("amX").onclick=dongAm;$("amNen").addEventListener("click",e=>{if(e.target.id==="amNen")dongAm();});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("amNen").hidden)dongAm();});
