@@ -772,7 +772,7 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
   <div class="ph">Người bạn đồng hành trên con đường tu học</div>
   <p class="gt">Nhớ ngày chay, ngày vía, đọc tụng kinh, công phu, đếm niệm Phật, nghe pháp và xem thủy triều để phóng sanh, tất cả trong một ứng dụng nhỏ gọn, dễ dùng cho mọi lứa tuổi.</p>
   <div class="nuts">
-   <a class="tai" href="https://github.com/hongphucamtb-art/Lich-via-phat/releases/latest/download/ChotTinhThuc.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 19h14"/></svg><div><b>Tải về cho Android</b><span>File APK · bản 2.6 · khoảng 1,7 MB</span></div></a>
+   <a class="tai" href="ChotTinhThuc.apk" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 19h14"/></svg><div><b>Tải về cho Android</b><span>File APK · bản 2.6 · khoảng 1,7 MB</span></div></a>
   </div>
   <div class="camket"><span>Miễn phí trọn đời</span><span>Không quảng cáo</span><span>Không cần tài khoản</span><span>Dữ liệu chỉ lưu trong máy</span></div>
  </div>
@@ -986,7 +986,7 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
  <div><p style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><img src="logo.png" alt="" style="width:44px;height:44px;border-radius:22px;background:#fff"><b style="color:var(--vang3);font-size:18px;letter-spacing:1px">CHỢT TỈNH THỨC</b></p><p>Trang tu học và ứng dụng đồng hành cùng quý Phật tử.<br>Tác giả: Diệu Âm Đức Thọ</p><p class="ft-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:chottinhthuc@gmail.com">chottinhthuc@gmail.com</a></p><div class="dem-tc" aria-label="Lượt truy cập"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Hôm nay <b id="demHn">…</b></span><span>Tổng <b id="demTong">…</b></span><span>Tải app <b id="demTai">…</b></span></div></div>
  <div><h4>Tu học</h4><ul><li><a href="#thuvien">Thư Viện Tịnh Độ</a></li><li><a href="#tungkinh">Tụng Kinh – Niệm Phật</a></li><li><a href="#honiem">Hộ Niệm – Xem Thủy Triều Phóng Sanh</a></li><li><a href="#tuhoc">Tu Học Tại Gia &amp; Hỏi Đáp</a></li></ul></div>
  <div><h4>Liên hệ &amp; Kênh</h4><ul><li><a href="mailto:chottinhthuc@gmail.com">Email: chottinhthuc@gmail.com</a></li><li><a href="https://www.youtube.com/@ChotTinhThuc" target="_blank" rel="noopener">YouTube: @ChotTinhThuc</a></li><li><a href="https://www.tiktok.com/@cht.tnh.thc" target="_blank" rel="noopener">TikTok: @cht.tnh.thc</a></li><li><a href="https://www.facebook.com/profile.php?id=61573570739476" target="_blank" rel="noopener">Facebook: Chợt Tỉnh Thức</a></li></ul></div>
- <div><h4>Ứng dụng</h4><ul><li><a href="https://github.com/hongphucamtb-art/Lich-via-phat/releases/latest/download/ChotTinhThuc.apk">Tải file APK</a></li><li><a href="huong-dan-su-dung.pdf" target="_blank" rel="noopener">Hướng dẫn sử dụng (PDF)</a></li><li><a href="chinh-sach-quyen-rieng-tu.html">Chính sách quyền riêng tư</a></li></ul></div>
+ <div><h4>Ứng dụng</h4><ul><li><a href="ChotTinhThuc.apk" download>Tải file APK</a></li><li><a href="huong-dan-su-dung.pdf" target="_blank" rel="noopener">Hướng dẫn sử dụng (PDF)</a></li><li><a href="chinh-sach-quyen-rieng-tu.html">Chính sách quyền riêng tư</a></li></ul></div>
  <div class="cuoi"><span>Nguyện đem công đức này, hướng về khắp tất cả, đệ tử và chúng sinh, đều trọn thành Phật đạo.</span><span>Nam Mô A Di Đà Phật</span></div>
 </div></footer>
 
@@ -1384,10 +1384,11 @@ async function moKinh(q){if(!LN){try{LN=await (await fetch("langnghiem.json")).j
  moSach({id:"langnghiem10",ten:"Kinh Thủ Lăng Nghiêm",phu:"Việt dịch: Cư sĩ Tâm Minh Lê Đình Thám",mau:"#5A2A12",phan:LN.map((c,i)=>({ten:"Quyển "+(i+1),chu:c}))},q||0);}
 function docKT(i,ds){const b0=KTB[ds[0]];moSach({id:"kt-"+ds[0],ten:b0.muc,phu:b0.nguon?"Theo "+b0.nguon.replace(/^Theo /,""):"",mau:"#4A1414",phan:ds.map(k=>{const b=KTB[k];return {ten:b.ten,chu:(b.phu?["*"+b.phu]:[]).concat(b.mau?["*Tên trong bài là tên mẫu, xin thay bằng tên người được hộ niệm."]:[],b.doan)};})},ds.indexOf(i));}
 const SACHC={};async function moSachId(id,phan){let b=SACHC[id];if(!b){try{b=SACHC[id]=await (await fetch("s-"+id+".json")).json();}catch(e){alert("Không tải được sách. Xin kiểm tra kết nối mạng.");return;}}moSach(b,phan);}
-// ===== Lượt tải app (GitHub) =====
-(async function(){const el=$("demTai");let n=null;try{const c=JSON.parse(sessionStorage.getItem("taiApp")||"null");if(c&&Date.now()-c.t<6e5)n=c.n;}catch(_){}
- if(n===null){try{let tong=0;for(let pg=1;pg<=5;pg++){const r=await fetch("https://api.github.com/repos/hongphucamtb-art/Lich-via-phat/releases?per_page=100&page="+pg);if(!r.ok)throw 0;const ds=await r.json();ds.forEach(rl=>rl.assets.forEach(a=>{if(/\.apk$/i.test(a.name))tong+=a.download_count;}));if(ds.length<100)break;}n=tong;try{sessionStorage.setItem("taiApp",JSON.stringify({t:Date.now(),n}));}catch(_){}}catch(e){}}
- if(n===null){el.parentNode.hidden=true;return;}el.textContent=n.toLocaleString("vi-VN");})();
+// ===== Lượt tải app =====
+(async function(){const el=$("demTai"),G="https://abacus.jasoncameron.dev/",K="chottinhthuc-com/taiapp",GOC=41;let n=null;
+ try{const r=await fetch(G+"get/"+K);n=r.status===404?0:((await r.json()).value||0);}catch(e){}
+ if(n===null){el.parentNode.hidden=true;}else el.textContent=(GOC+n).toLocaleString("vi-VN");
+ document.querySelectorAll('a[href$="ChotTinhThuc.apk"]').forEach(a=>a.addEventListener("click",()=>{fetch(G+"hit/"+K,{keepalive:true}).then(r=>r.json()).then(j=>{if(j&&j.value!=null){el.textContent=(GOC+j.value).toLocaleString("vi-VN");el.parentNode.hidden=false;}}).catch(()=>{});}));})();
 })();
 </script>
 <div class="cd-nen" id="cdNen" role="dialog" aria-modal="true" aria-labelledby="cdTieu"><div class="cd"><button class="x" id="cdX" aria-label="Quay lại">‹</button><h3 id="cdTieu">Đang tải app về máy…</h3><p class="phu">Tải xong, quý vị làm theo các bước dưới đây. Chỉ cần làm một lần.</p><div class="pc" id="cdPC">Quý vị đang dùng máy tính. Hãy mở trang <b>chottinhthuc.com</b> trên điện thoại Android để tải và cài app.</div><ol>
