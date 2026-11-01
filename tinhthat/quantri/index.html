@@ -48,7 +48,8 @@ button,input,select{font:inherit}
 .ds{display:grid;gap:10px;margin-bottom:60px}
 .don{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:start;background:var(--trang);border:1px solid var(--vien);border-left:5px solid #b8241a;border-radius:14px;padding:12px 14px}
 .don.sieu{border-left-color:#c8941a}
-.don.da{opacity:.62}
+.don.da{background:#e6f4ea;border-color:#b7dcc3;border-left-color:#2f8a4f}
+.don.da .ten span{background:#f4fbf6;border-color:#c9e6d2}
 .don input[type=checkbox]{width:20px;height:20px;margin-top:3px;accent-color:var(--do)}
 .don h3{margin:0 0 4px;font-size:16px;color:var(--nau)}
 .don .ten{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
@@ -113,7 +114,7 @@ button,input,select{font:inherit}
   <div class="loc">
    <select id="lLoai" aria-label="Lọc loại"><option value="">Cầu an và cầu siêu</option><option value="an">Chỉ cầu an</option><option value="sieu">Chỉ cầu siêu</option></select>
    <select id="lKy" aria-label="Lọc kỳ lễ"><option value="">Mọi kỳ lễ</option></select>
-   <select id="lIn" aria-label="Lọc trạng thái"><option value="chua">Chưa in</option><option value="da">Đã in</option><option value="">Tất cả</option></select>
+   <select id="lIn" aria-label="Lọc trạng thái"><option value="">Tất cả</option><option value="chua">Chưa in</option><option value="da">Đã in</option></select>
    <input type="search" id="lTim" placeholder="Tìm tên, người đứng cầu, số điện thoại…" aria-label="Tìm">
    <button type="button" class="nut nhat" id="bTai">Tải lại</button>
   </div>
@@ -171,7 +172,7 @@ function ve(){const v=loc();
   else box.innerHTML=v.map(d=>{const t=d.thoiGian?new Date(d.thoiGian):null;
     return `<article class="don ${d.loai}${d.daIn?' da':''}"><input type="checkbox" data-id="${esc(d.id)}" ${chon.has(d.id)?'checked':''} aria-label="Chọn danh sách của ${esc(bo(d.dungCau))}">
     <div><h3><span class="chip ${d.loai}">${d.loai==='an'?'CẦU AN':'CẦU SIÊU'}</span>${d.daIn?'<span class="chip da">ĐÃ IN</span>':''}${esc(bo(d.kyLe)||'Không ghi kỳ lễ')}</h3>
-    <div class="ten">${d.nguoi.map(n=>`<span>${esc(bo(n.ten))}${n.pd?' · PD '+esc(bo(n.pd)):''}</span>`).join('')}</div>
+    <div class="ten">${d.nguoi.map(n=>`<span>${esc(hoaChu(n.ten))}${n.pd?' · PD '+esc(hoaChu(n.pd)):''}</span>`).join('')}</div>
     <div class="phu">Người đứng cầu: <b>${esc(bo(d.dungCau))}</b>${d.sdt?' · '+esc(bo(d.sdt)):''}${d.diaChi?' · '+esc(bo(d.diaChi)):''}${d.ghiChu?'<br>Ghi chú: '+esc(bo(d.ghiChu)):''}</div></div>
     <time>${t?t.toLocaleString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}):''}</time></article>`;}).join('');
   const hienChon=v.filter(d=>chon.has(d.id)).length;$('chonHet').checked=v.length>0&&hienChon===v.length;
@@ -227,7 +228,7 @@ function veIn(){const per=+$('khoGiay').value,so=$('oSo').checked,dam=$('oDam').
 $('bIn').onclick=()=>{veIn();$('xem').hidden=false;document.body.style.overflow='hidden';};
 $('khoGiay').onchange=veIn;
 $('bDong').onclick=()=>{$('xem').hidden=true;document.body.style.overflow='';};
-$('bInNgay').onclick=async()=>{window.print();if(await hoi('Đánh dấu đã in?','Đánh dấu các danh sách vừa in là "đã in" để lần sau không in trùng.','Đánh dấu')){$('xem').hidden=true;document.body.style.overflow='';$('bDaIn').click();}};
+$('bInNgay').onclick=()=>{window.print();$('xem').hidden=true;document.body.style.overflow='';$('bDaIn').click();};
 
 /* ===== ĐĂNG NHẬP ===== */
 function vao(){$('dangNhap').hidden=true;$('bang').hidden=false;$('thoat').hidden=false;}
