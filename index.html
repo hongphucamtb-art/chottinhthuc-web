@@ -341,7 +341,7 @@ footer .cuoi{grid-column:1/-1;border-top:1px solid rgba(232,220,196,.15);padding
 .pk-ban .mo-tu{max-width:620px;margin:0 auto}
 /* Thanh chức năng */
 .tabbar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:19;background:var(--do3);border-bottom:1px solid rgba(243,199,74,.25);box-shadow:0 6px 16px rgba(40,10,10,.25)}
-.tabbar .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding-block:8px}
+.tabbar .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding-block:8px}
 .tabbar a{display:flex;align-items:center;justify-content:center;gap:9px;padding:10px 12px;border-radius:14px;color:var(--kem-chu);font-weight:700;font-size:15px;border:1px solid rgba(255,243,214,.14);background:rgba(255,243,214,.04);text-align:center;line-height:1.25;transition:background .15s}
 .tabbar a svg{width:22px;height:22px;flex:none;color:var(--vang3)}
 .tabbar a:hover{background:rgba(255,243,214,.1)}
@@ -383,7 +383,7 @@ header .nut{margin-left:auto}
 .hn-luuy b{display:block;color:var(--do);font-size:15.5px;margin-bottom:4px}
 .hn-luuy span{font-size:14px;color:var(--mo)}
 @media (max-width:900px){
- .tabbar .wrap{grid-template-columns:repeat(5,1fr);gap:4px;padding:6px 8px}
+ .tabbar .wrap{grid-template-columns:repeat(6,1fr);gap:4px;padding:6px 8px}
  .tabbar a{flex-direction:column;gap:3px;font-size:11.5px;padding:7px 2px;border-radius:12px;min-width:0}
  .tabbar a svg{width:21px;height:21px}
  .kt-nhom{grid-template-columns:1fr 1fr}.kt-ds,.bhn,.hn-luuy{grid-template-columns:1fr}
@@ -796,6 +796,22 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
 @media (max-width:600px){.ts-dau{flex-wrap:wrap}.ts-dau .ts-x{margin-right:0!important}.ts-dau>div{flex:1 1 100%!important}}
 /* video: ẩn ảnh bìa khi phát */
 .vd-bia[hidden]{display:none!important}
+
+.tt-the{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px;align-items:start}
+.tt-anh{position:relative;display:block;border-radius:22px;overflow:hidden;box-shadow:0 18px 40px rgba(62,15,15,.28);border:1px solid var(--vien);aspect-ratio:16/9;background:var(--do3)}
+.tt-anh img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.tt-anh:hover img{transform:scale(1.03)}
+.tt-anh .tt-vao{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:var(--vang2);color:var(--do2);font-weight:800;font-size:17px;padding:13px 26px;border-radius:999px;box-shadow:0 8px 22px rgba(0,0,0,.35);white-space:nowrap}
+.tt-anh .tt-vao svg{width:20px;height:20px}
+.tt-ds{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.tt-ds li{display:flex;gap:12px;align-items:flex-start;background:var(--trang);border:1px solid var(--vien);border-radius:16px;padding:12px 14px}
+.tt-ds b{display:block;color:var(--do);font-size:15.5px}
+.tt-ds span{color:var(--mo);font-size:14px;line-height:1.5}
+.tt-ds i{flex:none;width:34px;height:34px;border-radius:50%;background:var(--do);color:var(--vang3);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:15px}
+.tt-nut{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--do);color:var(--kem-chu);font-weight:800;font-size:16px;padding:13px 24px;border-radius:999px;text-decoration:none}
+.tt-nut:hover{background:var(--do2)}
+.tt-hd{margin-top:22px;color:var(--mo);font-size:14px;line-height:1.6;max-width:760px}
+@media (max-width:900px){.tt-the{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -809,6 +825,7 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
  <a href="#tungkinh" role="tab" data-tab="tungkinh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="1.6"/><circle cx="17.5" cy="6.3" r="1.6"/><circle cx="19.8" cy="11.8" r="1.6"/><circle cx="17.5" cy="17.3" r="1.6"/><circle cx="6.5" cy="17.3" r="1.6"/><circle cx="4.2" cy="11.8" r="1.6"/><circle cx="6.5" cy="6.3" r="1.6"/><circle cx="12" cy="19.8" r="1.6"/></svg><span>Tụng Kinh – Niệm Phật</span></a>
  <a href="#honiem" role="tab" data-tab="honiem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/><path d="M12 9v6M9 12h6"/></svg><span>Hộ Niệm – Xem Thủy Triều Phóng Sanh</span></a>
  <a href="#tuhoc" role="tab" data-tab="tuhoc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-3 4-3 8 0 11 3-3 3-7 0-11z"/><path d="M5 9c0 6 3 9 7 9s7-3 7-9"/><path d="M12 18v3"/></svg><span>Tu Học Tại Gia &amp; Hỏi Đáp</span></a>
+ <a href="#tinhthat" role="tab" data-tab="tinhthat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5C6 9 9 7 12 4c3 3 6 5 10 5.5"/><path d="M4.5 9.2V20M19.5 9.2V20M3 20h18"/><path d="M6.5 13c2-.3 3.8-1.2 5.5-2.7 1.7 1.5 3.5 2.4 5.5 2.7"/><path d="M10 20v-4h4v4"/></svg><span>Tịnh Thất A Di Đà – Châu Đốc</span></a>
 </div></nav>
 <main>
 <div class="tab-noi" id="trangchu" data-noi="trangchu">
@@ -1012,6 +1029,24 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
  <p class="ghichu">Lời đáp được tóm lược ý, không phải trích nguyên văn. Xin đọc thêm trong Ấn Quang Văn Sao, các bài giảng của HT Tịnh Không và Khai Thị Lục của HT Tuyên Hóa.</p>
 </div></section>
 
+</div>
+<div class="tab-noi" id="tinhthat" data-noi="tinhthat" hidden>
+<section class="khoi giay" id="ttadd" style="padding-top:44px"><div class="wrap">
+ <div class="tieu"><div><small>ĐI CHÙA TRỰC TUYẾN</small><h2>Tịnh Thất A Di Đà – Châu Đốc</h2><p>Dạo bước vào chùa ngay trên điện thoại: lễ Phật, thỉnh đại hồng chung, ngồi bồ đoàn tụng kinh, viết bài vị cầu an, cầu siêu. Ai vào chùa cùng lúc đều thấy nhau và cùng chắp tay chào.</p></div></div>
+ <div class="tt-the">
+  <a class="tt-anh" href="tinhthat/" aria-label="Vào chùa Tịnh Thất A Di Đà"><img src="tinhthat/bia.jpg" alt="Chánh điện Tịnh Thất A Di Đà về đêm, Phật tử ngồi lễ trên bồ đoàn" loading="lazy" width="1200" height="675"><span class="tt-vao"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>Vào chùa</span></a>
+  <div>
+   <ul class="tt-ds">
+    <li><i>1</i><div><b>Chánh điện và điện Tỳ Lô Giá Na</b><span>Đảnh lễ Phật, ngồi bồ đoàn lạy Phật và tụng hồng danh, hồi hướng.</span></div></li>
+    <li><i>2</i><div><b>Đại hồng chung, mõ, chuông, khánh</b><span>Tự tay thỉnh chuông, gõ mõ, đánh khánh với âm thanh như trong app Chợt Tỉnh Thức.</span></div></li>
+    <li><i>3</i><div><b>Bài vị cầu an, cầu siêu</b><span>Ghi tên người thân, đặt bài vị lên kệ trước chánh điện.</span></div></li>
+    <li><i>4</i><div><b>Cùng tu với mọi người</b><span>Mọi người đang ở chùa cùng lúc đều thấy nhau, thấy nhau chắp tay, lạy Phật, thỉnh chuông.</span></div></li>
+   </ul>
+   <a class="tt-nut" href="tinhthat/"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>Vào chùa ngay</a>
+  </div>
+ </div>
+ <p class="tt-hd">Cách đi: kéo vòng tròn bên trái để đi, kéo nửa phải màn hình để xoay nhìn, hoặc chạm vào mặt đất để đi tới chỗ đó. Đến gần tượng, chuông, mõ, bàn bài vị sẽ hiện nút để lễ hoặc thỉnh. Miễn phí, không cần cài đặt, chạy trên trình duyệt điện thoại và máy tính.</p>
+</div></section>
 </div>
 <div class="ts-nen" id="tsNen" hidden><article class="ts" role="dialog" aria-modal="true" aria-labelledby="tsTen">
  <div class="ts-dau"><img class="ts-anh" id="tsAnh" alt="" hidden><div style="flex:1;min-width:0"><span class="ts-so" id="tsSo"></span><h2 id="tsTen"></h2><p id="tsPhu"></p></div><button type="button" class="ts-x" id="tsX" aria-label="Quay lại">‹ Quay lại</button></div>
@@ -1350,7 +1385,7 @@ document.querySelectorAll("[data-am]").forEach(a=>a.addEventListener("click",e=>
  $("demHn").textContent=h.toLocaleString("vi-VN");$("demTong").textContent=t.toLocaleString("vi-VN");})();
 
 // Thanh chức năng
-const TABS=["trangchu","thuvien","tungkinh","honiem","tuhoc"];
+const TABS=["trangchu","thuvien","tungkinh","honiem","tuhoc","tinhthat"];
 function moTab(id,cuon){if(!TABS.includes(id))id="trangchu";if(id==="honiem"){try{moTrieu();}catch(e){}try{if(!KTB)veKT();}catch(e){}}document.querySelectorAll(".tab-noi").forEach(n=>n.hidden=n.dataset.noi!==id);document.querySelectorAll(".tabbar a").forEach(a=>a.setAttribute("aria-selected",a.dataset.tab===id));if(cuon)window.scrollTo({top:0,behavior:"instant"});}
 document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute("href").slice(1);if(TABS.includes(id)){e.preventDefault();moTab(id,true);try{history.replaceState(null,"","#"+id);}catch(_){}}});
 moTab((location.hash||"#trangchu").slice(1));
