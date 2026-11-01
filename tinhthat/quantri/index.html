@@ -103,7 +103,7 @@ button,input,select{font:inherit}
  </section>
 
  <section id="bang" hidden>
-  <div class="tke"><div><b id="tTong">0</b><span>Đơn đã nhận</span></div><div><b id="tAn">0</b><span>Người cầu an</span></div><div><b id="tSieu">0</b><span>Hương linh cầu siêu</span></div><div><b id="tChua">0</b><span>Đơn chưa in</span></div></div>
+  <div class="tke"><div><b id="tTong">0</b><span>Lượt gửi về</span></div><div><b id="tAn">0</b><span>Người cầu an</span></div><div><b id="tSieu">0</b><span>Hương linh cầu siêu</span></div><div><b id="tChua">0</b><span>Chưa in</span></div></div>
   <div class="loc">
    <select id="lLoai" aria-label="Lọc loại"><option value="">Cầu an và cầu siêu</option><option value="an">Chỉ cầu an</option><option value="sieu">Chỉ cầu siêu</option></select>
    <select id="lKy" aria-label="Lọc kỳ lễ"><option value="">Mọi kỳ lễ</option></select>
@@ -157,15 +157,15 @@ function loc(){const l=$('lLoai').value,k=$('lKy').value,i=$('lIn').value,t=$('l
 function ve(){const v=loc();
   $('tTong').textContent=DS.length;$('tAn').textContent=DS.filter(d=>d.loai==='an').reduce((s,d)=>s+d.nguoi.length,0);$('tSieu').textContent=DS.filter(d=>d.loai==='sieu').reduce((s,d)=>s+d.nguoi.length,0);$('tChua').textContent=DS.filter(d=>!d.daIn).length;
   const box=$('ds');
-  if(!v.length){box.innerHTML=`<div class="trong">${DS.length?'Không có đơn nào khớp bộ lọc.':'Chưa có đơn nào. Khi Phật tử gửi danh sách trên trang chùa, đơn sẽ hiện ở đây.'}</div>`;}
+  if(!v.length){box.innerHTML=`<div class="trong">${DS.length?'Không có danh sách nào khớp bộ lọc.':'Chưa có danh sách nào. Khi Phật tử gửi trên trang chùa, danh sách sẽ hiện ở đây.'}</div>`;}
   else box.innerHTML=v.map(d=>{const t=d.thoiGian?new Date(d.thoiGian):null;
-    return `<article class="don ${d.loai}${d.daIn?' da':''}"><input type="checkbox" data-id="${esc(d.id)}" ${chon.has(d.id)?'checked':''} aria-label="Chọn đơn của ${esc(bo(d.dungCau))}">
+    return `<article class="don ${d.loai}${d.daIn?' da':''}"><input type="checkbox" data-id="${esc(d.id)}" ${chon.has(d.id)?'checked':''} aria-label="Chọn danh sách của ${esc(bo(d.dungCau))}">
     <div><h3><span class="chip ${d.loai}">${d.loai==='an'?'CẦU AN':'CẦU SIÊU'}</span>${d.daIn?'<span class="chip da">ĐÃ IN</span>':''}${esc(bo(d.kyLe)||'Không ghi kỳ lễ')}</h3>
     <div class="ten">${d.nguoi.map(n=>`<span>${esc(bo(n.ten))}${n.pd?' · PD '+esc(bo(n.pd)):''}</span>`).join('')}</div>
     <div class="phu">Người đứng cầu: <b>${esc(bo(d.dungCau))}</b>${d.sdt?' · '+esc(bo(d.sdt)):''}${d.diaChi?' · '+esc(bo(d.diaChi)):''}${d.ghiChu?'<br>Ghi chú: '+esc(bo(d.ghiChu)):''}</div></div>
     <time>${t?t.toLocaleString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}):''}</time></article>`;}).join('');
   const hienChon=v.filter(d=>chon.has(d.id)).length;$('chonHet').checked=v.length>0&&hienChon===v.length;
-  $('dem').textContent=`Đang hiện ${v.length} đơn · đã chọn ${chon.size}`;['bIn','bDaIn','bXoa','bCsv'].forEach(b=>$(b).disabled=!chon.size);}
+  $('dem').textContent=`Đang hiện ${v.length} danh sách · đã chọn ${chon.size}`;['bIn','bDaIn','bXoa','bCsv'].forEach(b=>$(b).disabled=!chon.size);}
 $('ds').addEventListener('change',e=>{const c=e.target.closest('input[data-id]');if(!c)return;c.checked?chon.add(c.dataset.id):chon.delete(c.dataset.id);ve();});
 $('chonHet').addEventListener('change',e=>{loc().forEach(d=>e.target.checked?chon.add(d.id):chon.delete(d.id));ve();});
 ['lLoai','lKy','lIn'].forEach(i=>$(i).addEventListener('change',ve));$('lTim').addEventListener('input',ve);
@@ -176,7 +176,7 @@ function hoi(tieu,chu,nut){return new Promise(ok=>{$('hopTieu').textContent=tieu
 async function chay(btn,fn){const t=btn.textContent;btn.disabled=true;btn.textContent='Đang xử lý…';try{await fn();}catch(e){alertLoi(e);}finally{btn.textContent=t;btn.disabled=false;if(btn.id!=='bTai'&&btn.id!=='bDn')ve();}}
 function alertLoi(e){const m=LOI[e.message]||'Có lỗi xảy ra, vui lòng thử lại.';if(e.message==='mat-khau'){thoat();$('loiDn').textContent=m;}else{$('hopKhong').hidden=true;hoi('Chưa thực hiện được',m,'Đã hiểu').then(()=>{$('hopKhong').hidden=false;});}}
 $('bDaIn').onclick=()=>chay($('bDaIn'),async()=>{await goi({act:'daIn',pass:PASS,ids:[...chon]});DS.forEach(d=>{if(chon.has(d.id))d.daIn=true;});chon.clear();});
-$('bXoa').onclick=async()=>{const n=chon.size;if(!await hoi('Xóa '+n+' đơn?','Các đơn đã chọn sẽ bị xóa hẳn khỏi danh sách và không khôi phục được. Nên in hoặc tải Excel trước khi xóa.','Xóa hẳn'))return;
+$('bXoa').onclick=async()=>{const n=chon.size;if(!await hoi('Xóa '+n+' danh sách?','Các danh sách đã chọn sẽ bị xóa hẳn khỏi danh sách và không khôi phục được. Nên in hoặc tải Excel trước khi xóa.','Xóa hẳn'))return;
   chay($('bXoa'),async()=>{await goi({act:'xoa',pass:PASS,ids:[...chon]});DS=DS.filter(d=>!chon.has(d.id));chon.clear();});};
 $('bCsv').onclick=()=>{const hang=[['Loại','Kỳ lễ','Họ tên','Pháp danh','Năm sinh','Năm mất','Hưởng dương/thọ','Người đứng cầu','Điện thoại','Địa chỉ','Ghi chú','Ngày gửi']];
   DS.filter(d=>chon.has(d.id)).forEach(d=>d.nguoi.forEach(n=>hang.push([d.loai==='an'?'Cầu an':'Cầu siêu',bo(d.kyLe),bo(n.ten),bo(n.pd),bo(n.sinh),bo(n.mat),bo(n.tuoi),bo(d.dungCau),bo(d.sdt),bo(d.diaChi),bo(d.ghiChu),d.thoiGian?new Date(d.thoiGian).toLocaleString('vi-VN'):''])));
@@ -206,7 +206,7 @@ function veIn(){const per=+$('khoGiay').value,so=$('oSo').checked,dam=$('oDam').
       const dong=t.ds.map((l,j)=>`<span class="d">${so?(String(j+1).padStart(String(t.ds.length).length,' '))+'. ':''}${esc(l)}</span>`).join('');
       h+=`<div class="bv ${t.loai}" style="width:${w.toFixed(2)}mm;height:${hh.toFixed(2)}mm"><div class="khung" style="left:${((x0+pw)*100).toFixed(3)}%;top:${((y0+ph)*100).toFixed(3)}%;right:${((1-x1+pw)*100).toFixed(3)}%;bottom:${((1-y1+ph)*100).toFixed(3)}%"><div class="chu${giua?' giua':''}" style="font-weight:${dam?700:400}">${dong}</div></div></div>`;});
     h+='</div>';}
-  $('inVung').innerHTML=h||'<p style="color:#fff;text-align:center">Chưa chọn đơn nào.</p>';
+  $('inVung').innerHTML=h||'<p style="color:#fff;text-align:center">Chưa chọn danh sách nào.</p>';
   // canh cỡ chữ lớn nhất vừa khung (như phần mềm), tối đa 8.5% chiều cao khung
   const fit=()=>document.querySelectorAll('#inVung .khung').forEach(k=>{const c=k.firstElementChild,W=k.clientWidth,H=k.clientHeight;let lo=4,hi=Math.max(20,H),best=lo;
     while(lo<=hi){const m=(lo+hi)>>1;c.style.fontSize=m+'px';if(c.scrollWidth<=W&&c.scrollHeight<=H){best=m;lo=m+1;}else hi=m-1;}
@@ -216,7 +216,7 @@ function veIn(){const per=+$('khoGiay').value,so=$('oSo').checked,dam=$('oDam').
 $('bIn').onclick=()=>{veIn();$('xem').hidden=false;document.body.style.overflow='hidden';};
 $('khoGiay').onchange=veIn;
 $('bDong').onclick=()=>{$('xem').hidden=true;document.body.style.overflow='';};
-$('bInNgay').onclick=async()=>{window.print();if(await hoi('Đánh dấu đã in?','Đánh dấu các đơn vừa in là "đã in" để lần sau không in trùng.','Đánh dấu')){$('xem').hidden=true;document.body.style.overflow='';$('bDaIn').click();}};
+$('bInNgay').onclick=async()=>{window.print();if(await hoi('Đánh dấu đã in?','Đánh dấu các danh sách vừa in là "đã in" để lần sau không in trùng.','Đánh dấu')){$('xem').hidden=true;document.body.style.overflow='';$('bDaIn').click();}};
 
 /* ===== ĐĂNG NHẬP ===== */
 function vao(){$('dangNhap').hidden=true;$('bang').hidden=false;$('thoat').hidden=false;}
