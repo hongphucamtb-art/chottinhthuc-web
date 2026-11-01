@@ -886,7 +886,7 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
 .ca-form input:focus,.ca-form select:focus,.ca-form textarea:focus{outline:2px solid var(--vang2);border-color:var(--vang)}
 .ca-hang{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .ca-ds{border:1px dashed var(--vien);border-radius:16px;padding:12px 14px 14px;margin:0;display:grid;gap:10px}.ca-ds legend{padding:0 6px}
-.ca-ng{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.2fr) auto;gap:8px;align-items:end;padding-bottom:10px;border-bottom:1px solid var(--vien)}
+.ca-ng{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.2fr) minmax(0,.8fr) auto;gap:8px;align-items:end;padding-bottom:10px;border-bottom:1px solid var(--vien)}
 .ca-ng.sieu{grid-template-columns:minmax(0,2fr) minmax(0,1.2fr) minmax(0,.8fr) minmax(0,.8fr) minmax(0,1fr) auto}
 .ca-ng .ca-o label{font-size:12px;font-weight:600;color:var(--mo)}
 .ca-bo{border:0;background:none;color:var(--mo);font-size:22px;line-height:1;padding:10px 6px;cursor:pointer}
@@ -1545,7 +1545,7 @@ document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');i
   d.innerHTML='<div class="ca-o"><label for="'+u+'t">'+(sieu?'Họ tên hương linh':'Họ tên')+'</label><input id="'+u+'t" data-k="ten" maxlength="60" placeholder="Nguyễn Văn A"></div>'
    +'<div class="ca-o"><label for="'+u+'p">Pháp danh</label><input id="'+u+'p" data-k="pd" maxlength="40" placeholder="Nếu có"></div>'
    +(sieu?'<div class="ca-o"><label for="'+u+'s">Năm sinh</label><input id="'+u+'s" data-k="sinh" maxlength="12" inputmode="numeric"></div><div class="ca-o"><label for="'+u+'m">Năm mất</label><input id="'+u+'m" data-k="mat" maxlength="30"></div><div class="ca-o"><label for="'+u+'a">Hưởng dương/thọ</label><input id="'+u+'a" data-k="tuoi" maxlength="30" placeholder="Hưởng thọ 80 tuổi"></div>'
-   :'')+'<button type="button" class="ca-bo" aria-label="Bỏ dòng này">×</button>';
+   :'<div class="ca-o"><label for="'+u+'s">Năm sinh</label><input id="'+u+'s" data-k="sinh" maxlength="12" inputmode="numeric" placeholder="1987"></div>')+'<button type="button" class="ca-bo" aria-label="Bỏ dòng này">×</button>';
   d.querySelector('.ca-bo').onclick=()=>{if($('caNguoi').children.length>1)d.remove();else d.querySelectorAll('input').forEach(i=>i.value='');};
   $('caNguoi').appendChild(d);return d;}
  function datLai(){$('caNguoi').innerHTML='';dong();$('caNhan').textContent=loai()==='sieu'?'Hương linh cầu siêu':'Người được cầu an';}
