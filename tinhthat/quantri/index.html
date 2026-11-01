@@ -64,36 +64,19 @@ button,input,select{font:inherit}
 .xem-thanh select{padding:8px 10px;border-radius:10px;border:0}
 .xem-thanh label{font-size:13.5px;display:flex;align-items:center;gap:6px}
 #inVung{padding:20px 0 60px}
-.trangA4{width:210mm;height:297mm;margin:0 auto 18px;background:#fff;padding:6mm;display:grid;gap:3mm;box-shadow:0 8px 24px rgba(0,0,0,.35);overflow:hidden}
-.trangA4.c3{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr}
-.trangA4.c6{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr}
-.trangA4.c4{grid-template-columns:repeat(4,1fr);grid-template-rows:1fr}
-/* ===== BÀI VỊ ===== */
-.bv{--m:#b8241a;--m2:#8a140c;--nen:#fff7ef;--bang:#b8241a;--bangchu:#ffe9a8;--chu:#5a0e08;position:relative;display:flex;flex-direction:column;align-items:center;background:var(--nen);border:2.2px solid var(--m);border-radius:30mm 30mm 3mm 3mm/14mm 14mm 3mm 3mm;padding:3mm 3mm 3.5mm;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact;color:var(--chu)}
-.bv.sieu{--m:#9a6a14;--m2:#6a4408;--nen:#fffbe9;--bang:#e9c55a;--bangchu:#4a2a06;--chu:#3e2606}
-.bv::before{content:"";position:absolute;inset:1.6mm;border:.6px solid var(--m);border-radius:28mm 28mm 2mm 2mm/12.5mm 12.5mm 2mm 2mm;pointer-events:none}
-.bv .sen{width:15mm;height:9mm;margin-top:2.5mm;color:var(--m)}
-.bv .loai{margin-top:1mm;width:100%;background:var(--bang);color:var(--bangchu);text-align:center;font-family:var(--fs);font-weight:800;letter-spacing:1.5mm;font-size:6.2mm;padding:1.4mm 0 1.6mm;border-radius:1.5mm;box-shadow:inset 0 0 0 .5mm rgba(255,255,255,.35)}
-.bv .hieu{font-family:var(--fs);font-weight:700;font-size:3.1mm;line-height:1.35;text-align:center;margin:2mm 1mm 0;color:var(--m2)}
-.bv .gach{display:flex;align-items:center;gap:1.5mm;width:70%;margin:2.4mm 0 1.6mm;color:var(--m)}
-.bv .gach::before,.bv .gach::after{content:"";flex:1;height:.4mm;background:currentColor;opacity:.7}
-.bv .gach i{width:1.8mm;height:1.8mm;transform:rotate(45deg);background:currentColor}
-.bv .nhan{font-family:var(--fs);font-style:italic;font-weight:600;font-size:3.4mm;color:var(--m2);text-align:center}
-.bv .than{flex:1;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:calc(var(--cs,5.4mm)*.55);padding:1mm 1mm;min-height:0;overflow:hidden}
-.bv .ng{text-align:center;line-height:1.18}
-.bv .ng b{display:block;font-family:var(--fs);font-weight:800;font-size:var(--cs,5.4mm);color:var(--chu);text-transform:uppercase;letter-spacing:.15mm}
-.bv .ng span{display:block;font-size:max(2.8mm,calc(var(--cs,5.4mm)*.52));font-weight:600;color:var(--m2);margin-top:.6mm}
-.bv .duoi{width:100%;text-align:center;border-top:.5px solid var(--m);padding-top:1.8mm;margin-top:1mm}
-.bv .duoi .dc{font-size:3.3mm;font-weight:600;line-height:1.35}
-.bv .duoi .dc b{font-weight:800}
-.bv .duoi .chua{font-family:var(--fs);font-weight:800;font-size:3.2mm;color:var(--m);margin-top:1.2mm;letter-spacing:.2mm}
-.bv .duoi .ky{font-size:2.6mm;color:var(--m2);margin-top:.4mm}
-.trangA4.c6 .bv{border-radius:22mm 22mm 3mm 3mm/10mm 10mm 3mm 3mm}
-.trangA4.c6 .bv::before{border-radius:20mm 20mm 2mm 2mm/9mm 9mm 2mm 2mm}
-.trangA4.c6 .bv .sen{width:11mm;height:6mm;margin-top:1.5mm}
-.trangA4.c6 .bv .loai{font-size:5mm;padding:1mm 0}
-.trangA4.c6 .bv .hieu{font-size:2.5mm;margin-top:1.2mm}
-.trangA4.c6 .bv .gach{margin:1.4mm 0 1mm}
+/* ===== BÀI VỊ (theo phần mềm BaiVi v1.5.3: mẫu nền gốc + chữ Times) ===== */
+@font-face{font-family:'BV Serif';src:local('Times New Roman'),local('TimesNewRomanPSMT'),url(fonts/LiberationSerif-Regular.ttf) format('truetype');font-weight:400}
+@font-face{font-family:'BV Serif';src:local('Times New Roman Bold'),local('TimesNewRomanPS-BoldMT'),url(fonts/LiberationSerif-Bold.ttf) format('truetype');font-weight:700}
+.trangA4{width:210mm;height:297mm;margin:0 auto 18px;background:#fff;padding:6mm;display:flex;align-items:center;justify-content:center;gap:4mm;box-shadow:0 8px 24px rgba(0,0,0,.35);overflow:hidden}
+.bv{position:relative;flex:none;background-size:100% 100%;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.bv.an{background-image:url(tpl_cau_an.jpg);aspect-ratio:2230/6530}
+.bv.sieu{background-image:url(tpl_cau_sieu.jpg);aspect-ratio:2008/6044}
+.bv .khung{position:absolute;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bv .chu{font-family:'BV Serif','Times New Roman',Times,serif;color:#000;white-space:nowrap}
+.bv .chu.giua{text-align:center}
+.bv .chu .d{display:block;line-height:var(--lh,1.3)}
+.bv .chu .t{display:block;height:calc(var(--lh,1.3)*.55em)}
+.bv.chon{outline:.6mm dashed #b8912f;outline-offset:1mm}
 @media (max-width:760px){.tke{grid-template-columns:repeat(2,minmax(0,1fr))}.don{grid-template-columns:auto minmax(0,1fr)}.don time{grid-column:2}}
 @media print{
   @page{size:A4 portrait;margin:0}
@@ -142,7 +125,9 @@ button,input,select{font:inherit}
 
 <div class="xem" id="xem" hidden>
  <div class="xem-thanh"><b>Xem trước bài vị</b>
-  <label for="khoGiay">Khổ</label><select id="khoGiay"><option value="c3">3 bài vị lớn / tờ A4</option><option value="c4">4 bài vị / tờ A4</option><option value="c6">6 bài vị nhỏ / tờ A4</option></select>
+  <label for="khoGiay">Số bài vị / tờ A4</label><select id="khoGiay"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select>
+  <label><input type="checkbox" id="oSo" checked> Đánh số</label><label><input type="checkbox" id="oDam"> Chữ đậm</label><label><input type="checkbox" id="oGiua"> Canh giữa</label>
+  <label for="oCo">Cỡ chữ</label><input type="range" id="oCo" min="60" max="140" value="100" style="width:90px">
   <button type="button" class="nut vang" id="bInNgay">In ngay</button>
   <button type="button" class="nut nhat" id="bDong">Đóng</button>
  </div>
@@ -198,24 +183,36 @@ $('bCsv').onclick=()=>{const hang=[['Loại','Kỳ lễ','Họ tên','Pháp danh
   const csv='﻿'+hang.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\r\n');
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='cau-an-cau-sieu.csv';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);};
 
-/* ===== BÀI VỊ ===== */
-const SEN='<svg class="sen" viewBox="0 0 60 36" fill="currentColor" aria-hidden="true"><path d="M30 2c-5 6-6 15-2 24 1.2 2.6 2.8 2.6 4 0 4-9 3-18-2-24z"/><path d="M27 28C20 26 12 19 10 9c7 2 13 8 17 15zM33 28c7-2 15-9 17-19-7 2-13 8-17 15z" opacity=".8"/><path d="M26 30C17 31 8 27 3 19c8 0 15 3 21 8zM34 30c9 1 18-3 23-11-8 0-15 3-21 8z" opacity=".55"/><rect x="8" y="32" width="44" height="2.2" rx="1.1"/></svg>';
-const HIEU={an:'Nam Mô Tiêu Tai Diên Thọ<br>Dược Sư Lưu Ly Quang Như Lai',sieu:'Nam Mô Tây Phương Cực Lạc<br>Tiếp Dẫn Đạo Sư A Di Đà Phật'};
-const SUC={c3:{an:8,sieu:5},c4:{an:7,sieu:4},c6:{an:4,sieu:2}};
-function ng(n,loai){const ten=esc(bo(n.ten));const phu=[];if(n.pd)phu.push('Pháp danh '+esc(bo(n.pd)));
-  if(loai==='an'){if(n.sinh)phu.push('Sinh năm '+esc(bo(n.sinh)));}
-  else{const s=[n.sinh&&('Sinh '+esc(bo(n.sinh))),n.mat&&('Mất '+esc(bo(n.mat)))].filter(Boolean).join(' – ');if(s)phu.push(s);if(n.tuoi)phu.push(esc(bo(n.tuoi)));}
-  return `<div class="ng"><b>${ten}</b>${phu.map(p=>`<span>${p}</span>`).join('')}</div>`;}
-function baiVi(d,nhom){const an=d.loai==='an';
-  return `<div class="bv ${d.loai}">${SEN}<div class="loai">${an?'CẦU AN':'CẦU SIÊU'}</div><div class="hieu">${HIEU[d.loai]}</div><div class="gach"><i></i></div>
-  <div class="nhan">${an?'Cầu nguyện bình an cho':'Phụng vị hương linh'}</div><div class="than">${nhom.map(n=>ng(n,d.loai)).join('')}</div>
-  <div class="duoi"><div class="dc">${an?'Gia đình':'Thân nhân'} đứng cầu<br><b>${esc(bo(d.dungCau))}</b></div><div class="chua">Tịnh Thất A Di Đà</div>${d.kyLe?`<div class="ky">${esc(bo(d.kyLe))}</div>`:''}</div></div>`;}
-function veIn(){const kho=$('khoGiay').value,moi=kho==='c3'?3:kho==='c4'?4:6;const the=[];
-  DS.filter(d=>chon.has(d.id)).sort((a,b)=>a.loai===b.loai?0:a.loai==='an'?-1:1).forEach(d=>{const m=SUC[kho][d.loai];for(let i=0;i<d.nguoi.length;i+=m)the.push(baiVi(d,d.nguoi.slice(i,i+m)));});
-  let h='';for(let i=0;i<the.length;i+=moi)h+=`<div class="trangA4 ${kho}">${the.slice(i,i+moi).join('')}</div>`;$('inVung').innerHTML=h;
-  // co chữ cho vừa bài vị
-  requestAnimationFrame(()=>document.querySelectorAll('#inVung .than').forEach(t=>{let cs=kho==='c6'?6.4:kho==='c4'?7.6:9;t.style.setProperty('--cs',cs+'mm');let k=0;while(t.scrollHeight>t.clientHeight+1&&cs>2.4&&k<40){cs-=.2;k++;t.style.setProperty('--cs',cs.toFixed(2)+'mm');}
-    t.querySelectorAll('.ng b').forEach(b=>{let f=parseFloat(getComputedStyle(b).fontSize);let g=0;while(b.scrollWidth>t.clientWidth&&g<30){f*=.94;g++;b.style.fontSize=f+'px';}});}));}
+/* ===== BÀI VỊ – dàn chữ giống phần mềm BaiVi v1.5.3 ===== */
+const TPL={an:{w:2230,h:6530,r:[0.1229,0.3234,0.8767,0.7738]},sieu:{w:2008,h:6044,r:[0.1165,0.2647,0.8765,0.8132]}};
+const NAM=new Date().getFullYear();
+const hoaChu=t=>bo(t).toLowerCase().replace(/\s+/g,' ').trim().replace(/(^|\s)(\S)/g,(m,a,c)=>a+c.toUpperCase());
+function tuoiTu(n,loai){const so=x=>{const m=String(x||'').match(/\d{1,3}/);return m?+m[0]:0;};
+  const t=bo(n.tuoi).toLowerCase();if(t){const k=so(t);if(k){if(/d[uư][oơ]ng/.test(t))return 'HĐ : '+k+'T';if(/th[oọ]/.test(t))return 'HT : '+k+'T';return k+'t';}}
+  const sinh=(String(n.sinh||'').match(/(18|19|20)\d\d/)||[])[0];if(!sinh)return '';
+  if(loai==='sieu'){const mat=(String(n.mat||'').match(/(18|19|20)\d\d/)||[])[0];if(mat)return (mat-sinh+1)+'t';return '';}
+  return (NAM-sinh+1)+'t';}
+function dongTen(n,loai){return [hoaChu(n.ten),n.pd?'PD '+hoaChu(n.pd):'',tuoiTu(n,loai)].filter(Boolean).join(' - ');}
+const MOI=20;// tối đa số tên trên một bài vị, nhiều hơn thì sang bài vị mới
+function veIn(){const per=+$('khoGiay').value,so=$('oSo').checked,dam=$('oDam').checked,giua=$('oGiua').checked,co=+$('oCo').value/100;
+  const the=[];
+  DS.filter(d=>chon.has(d.id)).sort((a,b)=>a.loai===b.loai?0:a.loai==='an'?-1:1).forEach(d=>{const ds=d.nguoi.map(n=>dongTen(n,d.loai));for(let i=0;i<ds.length;i+=MOI)the.push({loai:d.loai,ds:ds.slice(i,i+MOI)});});
+  // khổ ô: A4 trừ lề 6mm, khe 4mm
+  const AW=198,AH=285,GAP=4,slotW=(AW-GAP*(per-1))/per;
+  let h='';
+  for(let i=0;i<the.length;i+=per){h+='<div class="trangA4">';
+    the.slice(i,i+per).forEach(t=>{const T=TPL[t.loai];const k=Math.min(slotW/T.w,AH/T.h);const w=T.w*k,hh=T.h*k;const [x0,y0,x1,y1]=T.r;
+      const pw=(x1-x0)*.03,ph=(y1-y0)*.015;
+      const dong=t.ds.map((l,j)=>`<span class="d">${so?(String(j+1).padStart(String(t.ds.length).length,' '))+'. ':''}${esc(l)}</span>`).join('');
+      h+=`<div class="bv ${t.loai}" style="width:${w.toFixed(2)}mm;height:${hh.toFixed(2)}mm"><div class="khung" style="left:${((x0+pw)*100).toFixed(3)}%;top:${((y0+ph)*100).toFixed(3)}%;right:${((1-x1+pw)*100).toFixed(3)}%;bottom:${((1-y1+ph)*100).toFixed(3)}%"><div class="chu${giua?' giua':''}" style="font-weight:${dam?700:400}">${dong}</div></div></div>`;});
+    h+='</div>';}
+  $('inVung').innerHTML=h||'<p style="color:#fff;text-align:center">Chưa chọn đơn nào.</p>';
+  // canh cỡ chữ lớn nhất vừa khung (như phần mềm), tối đa 8.5% chiều cao khung
+  const fit=()=>document.querySelectorAll('#inVung .khung').forEach(k=>{const c=k.firstElementChild,W=k.clientWidth,H=k.clientHeight;let lo=4,hi=Math.max(20,H),best=lo;
+    while(lo<=hi){const m=(lo+hi)>>1;c.style.fontSize=m+'px';if(c.scrollWidth<=W&&c.scrollHeight<=H){best=m;lo=m+1;}else hi=m-1;}
+    let sz=Math.min(best,Math.floor(H*.085));sz=Math.max(4,sz*co);c.style.fontSize=sz+'px';let g=0;while((c.scrollWidth>W||c.scrollHeight>H)&&sz>4&&g<200){sz-=.5;g++;c.style.fontSize=sz+'px';}});
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>requestAnimationFrame(fit));}
+['oSo','oDam','oGiua','oCo'].forEach(i=>$(i).addEventListener('input',veIn));
 $('bIn').onclick=()=>{veIn();$('xem').hidden=false;document.body.style.overflow='hidden';};
 $('khoGiay').onchange=veIn;
 $('bDong').onclick=()=>{$('xem').hidden=true;document.body.style.overflow='';};
