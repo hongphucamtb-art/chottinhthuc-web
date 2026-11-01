@@ -883,6 +883,7 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
 .ca-the.sieu input:checked+span{border-color:#c8941a;background:#fdf7e4}.ca-the.sieu b{color:#8a5a0e}
 .ca-the input:focus-visible+span{outline:2px solid var(--vang);outline-offset:2px}
 .ca-o{display:grid;gap:6px;min-width:0}.ca-o label,.ca-ds legend{font-weight:700;font-size:14px;color:var(--nau)}.ca-o i{color:#b3261e;font-style:normal}
+.ca-form input::placeholder,.ca-form textarea::placeholder{color:#b3a48c;opacity:1}
 .ca-form input,.ca-form select,.ca-form textarea{width:100%;box-sizing:border-box;padding:11px 13px;border:1px solid var(--vien);border-radius:12px;background:var(--kem);font:inherit;font-size:16px;color:var(--nau)}
 .ca-form input:focus,.ca-form select:focus,.ca-form textarea:focus{outline:2px solid var(--vang2);border-color:var(--vang)}
 .ca-hang{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -1164,7 +1165,7 @@ footer a{color:inherit}footer a:hover{color:var(--vang3)}
     <label class="ca-the an"><input type="radio" name="caLoai" value="an" checked><span><b>Cầu An</b><small>Cho người còn sống được bình an, mạnh khỏe</small></span></label>
     <label class="ca-the sieu"><input type="radio" name="caLoai" value="sieu"><span><b>Cầu Siêu</b><small>Cho hương linh người đã khuất được siêu sinh</small></span></label>
    </div>
-   <div class="ca-o"><label for="caKy">Kỳ lễ</label><select id="caKy"><option>Cầu thường xuyên</option><option>Rằm tháng Giêng</option><option>Lễ Phật Đản</option><option>Lễ Vu Lan</option><option>Tết Nguyên Đán</option><option>Lễ Vía A Di Đà</option></select></div>
+   <div class="ca-o"><label for="caKy">Kỳ lễ</label><input id="caKy" maxlength="40" list="caKyGoiY" autocomplete="off" placeholder="Nhập kỳ lễ, ví dụ: Rằm tháng Giêng, Lễ Vu Lan…"><datalist id="caKyGoiY"><option value="Cầu thường xuyên"><option value="Rằm tháng Giêng"><option value="Lễ Phật Đản"><option value="Lễ Vu Lan"><option value="Tết Nguyên Đán"><option value="Lễ Vía A Di Đà"></datalist></div>
    <fieldset class="ca-ds"><legend id="caNhan">Người được cầu an</legend><div id="caNguoi"></div>
     <button type="button" class="ca-them" id="caThem">+ Thêm người</button></fieldset>
    <div class="ca-hang">
@@ -1559,9 +1560,9 @@ document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');i
   if(!$('caDung').value.trim()){$('caLoi').textContent='Xin ghi họ tên người đứng cầu.';$('caDung').focus();return;}
   if(!window.CA_API){$('caLoi').textContent='Mục ghi danh đang được chùa chuẩn bị, xin quý Phật tử quay lại sau.';return;}
   const b=$('caGui');b.disabled=true;b.textContent='Đang gửi…';
-  try{const r=await fetch(window.CA_API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({act:'gui',loai:loai(),kyLe:$('caKy').value,nguoi,dungCau:$('caDung').value.trim(),sdt:$('caSdt').value.trim(),diaChi:$('caDc').value.trim(),ghiChu:$('caGc').value.trim(),web:$('caWeb').value})});
+  try{const r=await fetch(window.CA_API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({act:'gui',loai:loai(),kyLe:$('caKy').value.trim(),nguoi,dungCau:$('caDung').value.trim(),sdt:$('caSdt').value.trim(),diaChi:$('caDc').value.trim(),ghiChu:$('caGc').value.trim(),web:$('caWeb').value})});
    const j=await r.json();if(!j.ok)throw 0;
-   $('caXongChu').textContent=(loai()==='an'?'Đã ghi danh cầu an cho ':'Đã ghi danh cầu siêu cho ')+nguoi.length+(loai()==='an'?' người':' hương linh')+' ('+$('caKy').value+'). Nam Mô A Di Đà Phật.';
+   $('caXongChu').textContent=(loai()==='an'?'Đã ghi danh cầu an cho ':'Đã ghi danh cầu siêu cho ')+nguoi.length+(loai()==='an'?' người':' hương linh')+($('caKy').value.trim()?' ('+$('caKy').value.trim()+')':'')+'. Nam Mô A Di Đà Phật.';
    f.hidden=true;$('caXong').hidden=false;f.reset();datLai();
   }catch(x){$('caLoi').textContent='Chưa gửi được. Xin kiểm tra mạng rồi bấm gửi lại.';}
   finally{b.disabled=false;b.textContent='Gửi về chùa';}});
