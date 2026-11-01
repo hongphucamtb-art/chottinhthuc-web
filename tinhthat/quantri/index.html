@@ -31,9 +31,15 @@ button,input,select{font:inherit}
 .dn .nut{width:100%}
 .loi{color:#b3261e;font-size:14px;min-height:20px;margin-top:10px}
 /* bảng điều khiển */
-.tke{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:22px 0 16px}
-.tke div{background:var(--trang);border:1px solid var(--vien);border-radius:14px;padding:12px 14px}
-.tke b{display:block;font-size:24px;color:var(--do);font-variant-numeric:tabular-nums}.tke span{color:var(--mo);font-size:13px}
+.tke{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 16px}
+.tk{display:block;text-align:left;font:inherit;cursor:pointer;background:var(--trang);border:1px solid var(--vien);border-top:5px solid #b8241a;border-radius:16px;padding:14px 16px;color:inherit}
+.tk.sieu{border-top-color:#c8941a}.tk.on{box-shadow:0 0 0 2px var(--vang2)}
+.tk h4{margin:0 0 10px;font-family:var(--fs);font-size:19px;color:var(--do)}.tk.sieu h4{color:#8a5a0e}
+.tk-so{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tk-so div{background:var(--kem);border-radius:10px;padding:8px 10px}
+.tk-so b{display:block;font-size:24px;color:var(--do);font-variant-numeric:tabular-nums;line-height:1.1}.tk.sieu .tk-so b{color:#8a5a0e}
+.tk-so span{color:var(--mo);font-size:12.5px}
+.tk p{margin:8px 0 0;color:var(--mo);font-size:13px}
 .loc{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--trang);border:1px solid var(--vien);border-radius:14px;padding:12px;position:sticky;top:0;z-index:5}
 .loc select,.loc input[type=search]{padding:9px 12px;border:1px solid var(--vien);border-radius:10px;background:#fff;min-width:0}
 .loc input[type=search]{flex:1 1 200px}
@@ -77,7 +83,7 @@ button,input,select{font:inherit}
 .bv .chu .d{display:block;line-height:var(--lh,1.3)}
 .bv .chu .t{display:block;height:calc(var(--lh,1.3)*.55em)}
 .bv.chon{outline:.6mm dashed #b8912f;outline-offset:1mm}
-@media (max-width:760px){.tke{grid-template-columns:repeat(2,minmax(0,1fr))}.don{grid-template-columns:auto minmax(0,1fr)}.don time{grid-column:2}}
+@media (max-width:760px){.tke{grid-template-columns:1fr}.don{grid-template-columns:auto minmax(0,1fr)}.don time{grid-column:2}}
 @media print{
   @page{size:A4 portrait;margin:0}
   body{background:#fff}
@@ -103,7 +109,7 @@ button,input,select{font:inherit}
  </section>
 
  <section id="bang" hidden>
-  <div class="tke"><div><b id="tTong">0</b><span>Lượt gửi về</span></div><div><b id="tAn">0</b><span>Người cầu an</span></div><div><b id="tSieu">0</b><span>Hương linh cầu siêu</span></div><div><b id="tChua">0</b><span>Chưa in</span></div></div>
+  <div class="tke"><button type="button" class="tk an" data-loai="an"><h4>Cầu An</h4><div class="tk-so"><div><b id="anNhan">0</b><span>đã nhận</span></div><div><b id="anIn">0</b><span>đã in</span></div><div><b id="anChua">0</b><span>chưa in</span></div></div><p id="anNguoi"></p></button><button type="button" class="tk sieu" data-loai="sieu"><h4>Cầu Siêu</h4><div class="tk-so"><div><b id="siNhan">0</b><span>đã nhận</span></div><div><b id="siIn">0</b><span>đã in</span></div><div><b id="siChua">0</b><span>chưa in</span></div></div><p id="siNguoi"></p></button></div>
   <div class="loc">
    <select id="lLoai" aria-label="Lọc loại"><option value="">Cầu an và cầu siêu</option><option value="an">Chỉ cầu an</option><option value="sieu">Chỉ cầu siêu</option></select>
    <select id="lKy" aria-label="Lọc kỳ lễ"><option value="">Mọi kỳ lễ</option></select>
@@ -155,7 +161,11 @@ async function tai(){const j=await goi({act:'ds',pass:PASS});DS=(j.ds||[]).sort(
 function loc(){const l=$('lLoai').value,k=$('lKy').value,i=$('lIn').value,t=$('lTim').value.trim().toLowerCase();
   return DS.filter(d=>(!l||d.loai===l)&&(!k||bo(d.kyLe)===k)&&(!i||(i==='da'?d.daIn:!d.daIn))&&(!t||[d.dungCau,d.sdt,d.diaChi,...d.nguoi.map(n=>n.ten+' '+n.pd)].join(' ').toLowerCase().includes(t)));}
 function ve(){const v=loc();
-  $('tTong').textContent=DS.length;$('tAn').textContent=DS.filter(d=>d.loai==='an').reduce((s,d)=>s+d.nguoi.length,0);$('tSieu').textContent=DS.filter(d=>d.loai==='sieu').reduce((s,d)=>s+d.nguoi.length,0);$('tChua').textContent=DS.filter(d=>!d.daIn).length;
+  {const st=l=>{const a=DS.filter(d=>d.loai===l);return[a.length,a.filter(d=>d.daIn).length,a.reduce((s,d)=>s+d.nguoi.length,0)];};
+   const [an,anI,anN]=st('an'),[si,siI,siN]=st('sieu');
+   $('anNhan').textContent=an;$('anIn').textContent=anI;$('anChua').textContent=an-anI;$('anNguoi').textContent='Tổng '+anN+' người được cầu an';
+   $('siNhan').textContent=si;$('siIn').textContent=siI;$('siChua').textContent=si-siI;$('siNguoi').textContent='Tổng '+siN+' hương linh';
+   document.querySelectorAll('.tk').forEach(t=>t.classList.toggle('on',$('lLoai').value===t.dataset.loai));}
   const box=$('ds');
   if(!v.length){box.innerHTML=`<div class="trong">${DS.length?'Không có danh sách nào khớp bộ lọc.':'Chưa có danh sách nào. Khi Phật tử gửi trên trang chùa, danh sách sẽ hiện ở đây.'}</div>`;}
   else box.innerHTML=v.map(d=>{const t=d.thoiGian?new Date(d.thoiGian):null;
@@ -168,7 +178,8 @@ function ve(){const v=loc();
   $('dem').textContent=`Đang hiện ${v.length} danh sách · đã chọn ${chon.size}`;['bIn','bDaIn','bXoa','bCsv'].forEach(b=>$(b).disabled=!chon.size);}
 $('ds').addEventListener('change',e=>{const c=e.target.closest('input[data-id]');if(!c)return;c.checked?chon.add(c.dataset.id):chon.delete(c.dataset.id);ve();});
 $('chonHet').addEventListener('change',e=>{loc().forEach(d=>e.target.checked?chon.add(d.id):chon.delete(d.id));ve();});
-['lLoai','lKy','lIn'].forEach(i=>$(i).addEventListener('change',ve));$('lTim').addEventListener('input',ve);
+['lLoai','lKy','lIn'].forEach(i=>$(i).addEventListener('change',ve));
+document.querySelectorAll('.tk').forEach(t=>t.addEventListener('click',()=>{const l=$('lLoai');l.value=l.value===t.dataset.loai?'':t.dataset.loai;$('lIn').value='';ve();}));$('lTim').addEventListener('input',ve);
 $('bTai').onclick=()=>chay($('bTai'),tai);
 
 function hoi(tieu,chu,nut){return new Promise(ok=>{$('hopTieu').textContent=tieu;$('hopChu').textContent=chu;$('hopCo').textContent=nut;$('hop').hidden=false;
